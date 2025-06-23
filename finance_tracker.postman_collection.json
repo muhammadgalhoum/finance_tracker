@@ -1,0 +1,596 @@
+{
+	"info": {
+		"_postman_id": "09b1d5ed-aaec-41f8-b0e1-042ef1177fcb",
+		"name": "finance_tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18395362"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Get Access and Refresh Tokens",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"admin\",\r\n    \"password\":\"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/token/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						},
+						"description": "Return Access and Refresh Tokens"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Access token by Refresh token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1MDc1MTUxOCwiaWF0IjoxNzUwNjY1MTE4LCJqdGkiOiI2MzQ3ZDNlYjRiYmY0YzAxOTYyN2RiYjU0OTczODQyYiIsInVzZXJfaWQiOjF9.py2WgkADIUSNamErufvoLHBBVWhHcbJVTj8axf9xhx4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/token/refresh/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"token",
+								"refresh",
+								""
+							]
+						},
+						"description": "Update the Access Token using the Refresh Token"
+					},
+					"response": []
+				},
+				{
+					"name": "Register new user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"muhammad\",\r\n  \"email\": \"muhammad@example.com\",\r\n  \"password\": \"Uniparticle_25k\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"register",
+								""
+							]
+						},
+						"description": "Register New User"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Return All Categories",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/categories/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"categories",
+								""
+							]
+						},
+						"description": "Get All Categories"
+					},
+					"response": []
+				},
+				{
+					"name": "Return a specific category",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/categories/b4983e0c-6a4f-42de-89b0-dbd699d9602b/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"categories",
+								"b4983e0c-6a4f-42de-89b0-dbd699d9602b",
+								""
+							]
+						},
+						"description": "Retrieve a specific Category"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Return all Transactions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/transactions/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"transactions",
+								""
+							]
+						},
+						"description": "Return all your Transiactions"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a specific Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/transactions/b21bd1dd-9bab-4f42-93a4-ac5bdbaaf94d/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"transactions",
+								"b21bd1dd-9bab-4f42-93a4-ac5bdbaaf94d",
+								""
+							]
+						},
+						"description": "Return a specific Transiaction from your transiaction"
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": \"28000.00\",\r\n    \"date\": \"2025-07-1\",\r\n    \"description\": \"July Salary\",\r\n    \"category\": \"b4983e0c-6a4f-42de-89b0-dbd699d9602b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/transactions/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"transactions",
+								""
+							]
+						},
+						"description": "Create new Transiaction"
+					},
+					"response": []
+				},
+				{
+					"name": "Update partially a specific transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"amount\": \"28000.00\",\r\n        \"date\": \"2025-08-01\",\r\n        \"description\": \"Augest Salary Inshallah\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/transactions/b21bd1dd-9bab-4f42-93a4-ac5bdbaaf94d/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"transactions",
+								"b21bd1dd-9bab-4f42-93a4-ac5bdbaaf94d",
+								""
+							]
+						},
+						"description": "Update partialy a specific Transiaction"
+					},
+					"response": []
+				},
+				{
+					"name": "Update a specific transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"b21bd1dd-9bab-4f42-93a4-ac5bdbaaf94d\",\r\n    \"amount\": \"30000.00\",\r\n    \"date\": \"2025-08-01\",\r\n    \"description\": \"Updated Augest Salary Inshallah\",\r\n    \"category\": \"b4983e0c-6a4f-42de-89b0-dbd699d9602b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/transactions/b21bd1dd-9bab-4f42-93a4-ac5bdbaaf94d/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"transactions",
+								"b21bd1dd-9bab-4f42-93a4-ac5bdbaaf94d",
+								""
+							]
+						},
+						"description": "Update a specific Transiaction"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a specific transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/transactions/b21bd1dd-9bab-4f42-93a4-ac5bdbaaf94d/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"transactions",
+								"b21bd1dd-9bab-4f42-93a4-ac5bdbaaf94d",
+								""
+							]
+						},
+						"description": "Delete partialy a specific Transiaction"
+					},
+					"response": []
+				},
+				{
+					"name": "Export your transactions as a CSV",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/transactions/export/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"transactions",
+								"export",
+								""
+							]
+						},
+						"description": "Export your transiactions report"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MonthlySummary",
+			"item": [
+				{
+					"name": "Return all Monthly Summaries",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/summaries/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"summaries",
+								""
+							]
+						},
+						"description": "Get All your records from the MonthlySummry Model "
+					},
+					"response": []
+				},
+				{
+					"name": "Return a specific Monthly Summaries",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUwNjY3NDUzLCJpYXQiOjE3NTA2NjM4NTMsImp0aSI6IjNkNmZjMWI3ZGFiODQ1YTc4NGY4MzI0NmVhOGJjNTEwIiwidXNlcl9pZCI6MX0.TeR3TY7h99tzelgti3yHxvMx4iNC8e0kEpGpf015RzY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/summaries/950e2eba-2af1-436f-9b47-5405f45f8028/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"summaries",
+								"950e2eba-2af1-436f-9b47-5405f45f8028",
+								""
+							]
+						},
+						"description": "Retrieve a specific Monthly Summary"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "access_token",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

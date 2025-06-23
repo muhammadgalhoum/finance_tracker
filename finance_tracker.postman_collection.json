@@ -47,7 +47,7 @@
 					"response": []
 				},
 				{
-					"name": "Update Access token by Refresh token",
+					"name": "Get new Access token by Refresh token",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -87,7 +87,7 @@
 								""
 							]
 						},
-						"description": "Update the Access Token using the Refresh Token"
+						"description": "Get new Access Token using the Refresh Token"
 					},
 					"response": []
 				},
@@ -164,7 +164,7 @@
 								""
 							]
 						},
-						"description": "Get All Categories"
+						"description": "Get all the Categories"
 					},
 					"response": []
 				},
@@ -240,7 +240,7 @@
 								""
 							]
 						},
-						"description": "Return all your Transiactions"
+						"description": "Return all your Transactions"
 					},
 					"response": []
 				},
@@ -276,7 +276,7 @@
 								""
 							]
 						},
-						"description": "Return a specific Transiaction from your transiaction"
+						"description": "Return a specific Transiaction from your Transactions"
 					},
 					"response": []
 				},
@@ -320,7 +320,7 @@
 								""
 							]
 						},
-						"description": "Create new Transiaction"
+						"description": "Create new Transaction"
 					},
 					"response": []
 				},
@@ -365,7 +365,7 @@
 								""
 							]
 						},
-						"description": "Update partialy a specific Transiaction"
+						"description": "Update partialy a specific Transaction"
 					},
 					"response": []
 				},
@@ -410,7 +410,7 @@
 								""
 							]
 						},
-						"description": "Update a specific Transiaction"
+						"description": "Update a specific Transaction"
 					},
 					"response": []
 				},
@@ -455,7 +455,7 @@
 								""
 							]
 						},
-						"description": "Delete partialy a specific Transiaction"
+						"description": "Delete partialy a specific Transaction"
 					},
 					"response": []
 				},
@@ -503,7 +503,7 @@
 								""
 							]
 						},
-						"description": "Export your transiactions report"
+						"description": "Export your transactions report"
 					},
 					"response": []
 				}
@@ -543,7 +543,7 @@
 								""
 							]
 						},
-						"description": "Get All your records from the MonthlySummry Model "
+						"description": "Get All your records from the MonthlySummry Model"
 					},
 					"response": []
 				},
@@ -579,7 +579,7 @@
 								""
 							]
 						},
-						"description": "Retrieve a specific Monthly Summary"
+						"description": "Retrieve a specific record from MonthlySummary model"
 					},
 					"response": []
 				}

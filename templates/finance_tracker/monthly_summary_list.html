@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="summary-container">
+    <h2>Monthly Summary</h2>
+    {% if summaries %}
+    <table class="summary-table">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Income</th>
+                <th>Expenses</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for summary in summaries %}
+            <tr>
+                <td>{{ summary.month|date:"F Y" }}</td>
+                <td>{{ summary.income }}</td>
+                <td>{{ summary.expenses }}</td>
+                <td>{{ summary.balance }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No summaries available yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

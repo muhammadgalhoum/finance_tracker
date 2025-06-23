@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <aside>
+        <h3>Categories</h3>
+        <ul>
+            <li><a href="{% url 'finance_tracker:transaction_list' %}">All</a></li>
+            {% for category in categories %}
+                <li>
+                    <a href="{% url 'finance_tracker:transaction_list_by_category' category.id %}">
+                        {{ category.name }}
+                    </a>
+                </li>
+            {% empty %}
+                <li>No categories used yet.</li>
+            {% endfor %}
+        </ul>
+    </aside>
+
+    <section class="main-content">
+        <form method="get">
+            <label for="date">Filter by Date:</label>
+            <input type="date" name="date" id="date" value="{{ selected_date }}">
+            <button type="submit">Apply</button>
+        </form>
+
+        <form method="get" action="{% url 'finance_tracker:transaction_search' %}">
+            <input type="text" name="q" placeholder="Search..." />
+            <button type="submit">Search</button>
+        </form>
+
+        <h2>Transactions</h2>
+        {% if transactions %}
+            <p>
+                <a href="{% url 'finance_tracker:export_transactions_csv' %}?{% if selected_category %}category={{ selected_category.id }}&{% endif %}{% if selected_date %}date={{ selected_date }}&{% endif %}{% if search_query %}q={{ search_query }}{% endif %}">
+                    Export Filtered CSV
+                </a>                
+            </p>
+        {% endif %}
+        {% if transactions %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for t in transactions %}
+                        <tr>
+                            <td>{{ t.date }}</td>
+                            <td>{{ t.category.name }}</td>
+                            <td>{{ t.category.type }}</td>
+                            <td>{{ t.amount }}</td>
+                            <td>{{ t.description|default:"—" }}</td>
+                            <td>
+                                <a href="{% url 'finance_tracker:transaction_update' t.id %}">Update</a>
+                                <a href="{% url 'finance_tracker:transaction_delete' t.id %}">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>{{ empty_message }}</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

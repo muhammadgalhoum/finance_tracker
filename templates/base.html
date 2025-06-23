@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/login-form.css' %}">
+        <link rel="stylesheet" href="{% static 'css/register-form.css' %}">
+        <title>Finance Tracker</title>
+    </head>
+    <body>
+        <nav>
+            <div class="menues">
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'finance_tracker:transaction_list' %}">Home</a>
+                <a href="{% url 'finance_tracker:transaction_create' %}">Create</a>
+                <a href="{% url 'finance_tracker:monthly_summary_list' %}">Monthly Summary</a>
+                {% endif %}
+            </div>
+            <div class="links">
+                {% if request.user.is_authenticated %}
+                <span>Welcome, {{ request.user.username }}!</span>
+                <form action="{% url 'users:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+                {% else %}
+                    <a href="{% url 'users:login' %}">Login</a>
+                    <a href="{% url 'users:register' %}">Register</a>
+                {% endif %}
+            </div>
+        </nav>
+        {% block content %}{% endblock content %}
+    </body>
+</html>

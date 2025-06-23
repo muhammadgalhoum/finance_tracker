@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Transaction Form{% endblock title %}
+{% block content %}
+<div class="content">
+    <div class="container">
+        <form class="transaction-form" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div>
+                <input type="submit" value="save"/>
+                <a href="{% url 'finance_tracker:transaction_list' %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

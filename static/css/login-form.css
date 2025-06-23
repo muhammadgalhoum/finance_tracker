@@ -1,0 +1,23 @@
+.content .container .user-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  margin-top: 25px;
+  box-shadow: 1px 3px 5px 2px rgba(214, 214, 214, 1);
+}
+
+.content .container .user-login-form input {
+  width: 100%;
+  padding: 6px;
+  margin: 12px 0;
+}
+
+.content .container .user-login-form button[type="submit"] {
+  cursor: pointer;
+  padding: 3px 6px 2px;
+}
+
+.content .container .user-login-form ul {
+  list-style-type: none;
+}

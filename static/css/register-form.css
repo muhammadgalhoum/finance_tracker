@@ -1,0 +1,33 @@
+.content .container .user-register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  margin-top: 25px;
+  box-shadow: 1px 3px 5px 2px rgba(214, 214, 214, 1);
+}
+
+.content .container .user-register-form label,
+.content .container .user-register-form small {
+  color: #009688;
+}
+
+.content .container .user-register-form input {
+  width: 100%;
+  padding: 6px;
+  margin: 12px 0;
+}
+
+.content .container .user-register-form ul {
+  list-style-type: none;
+}
+
+.content .container .user-register-form p,
+.content .container .user-register-form ul li {
+  color: #03A9F4;
+}
+
+.content .container .user-register-form button[type="submit"] {
+  cursor: pointer;
+  padding: 3px 6px 2px;
+}

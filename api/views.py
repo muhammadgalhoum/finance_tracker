@@ -1,10 +1,9 @@
 import csv
 from django.http import HttpResponse
-from rest_framework import generics
+from rest_framework import generics, viewsets, permissions, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import viewsets, permissions
-from rest_framework import status
+
 from .serializers import (
     UserRegistrationSerializer, 
     TransactionSerializer,
@@ -29,7 +28,6 @@ class TransactionViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     search_fields = ["description", "amount", "category__name"]
     ordering_fields = ["date", "amount"]
-
 
     def get_queryset(self):
         return Transaction.objects.filter(user=self.request.user)

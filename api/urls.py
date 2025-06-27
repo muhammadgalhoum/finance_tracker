@@ -17,7 +17,7 @@ app_name = "api"
 
 
 router = DefaultRouter()
-router.register("transactions", TransactionViewSet, basename="transaction")
+router.register("transactions", TransactionViewSet)
 
 urlpatterns = [
     path("register/", RegisterView.as_view(), name="register"),
